@@ -13,6 +13,8 @@ import {
   loadCSS,
 } from './aem.js';
 
+import { getImageUrlFromPicture } from './utils.js';
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
@@ -48,7 +50,7 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    //buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -75,6 +77,20 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
+
+  document.querySelector('head').insertAdjacentHTML(
+    'beforeend',
+    `<link rel="preconnect" href="https://dxenablementbeta.blob.core.windows.net">
+    <link rel="preconnect" href="https://experienceleague.adobe.com">`,
+  );
+
+  [...document.querySelectorAll('picture')].slice(0, 1).forEach((picture) => {
+    document.querySelector('head').insertAdjacentHTML(
+      'beforeend',
+      `<link rel="preload" fetchpriority="high" as="image" href="${getImageUrlFromPicture(picture)}" type="image/webp">`,
+    );
+  });
+
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
@@ -100,6 +116,8 @@ async function loadEager(doc) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
+
+  document.querySelector('head').insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="https://experienceleague.adobe.com/styles/styles.css">');
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
@@ -133,3 +151,8 @@ async function loadPage() {
 }
 
 loadPage();
+
+(async function loadDa() {
+  if (!new URL(window.location.href).searchParams.get('dapreview')) return;
+  import('https://da.live/scripts/dapreview.js').then(({ default: daPreview }) => daPreview(loadPage));
+}());

@@ -77,6 +77,11 @@ header {
   height: var(--nav-height);
 }
 
+main {
+  max-width: 933px;
+  margin: 0 auto;
+}
+
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
@@ -198,10 +203,11 @@ main .section {
 
 @media (width >= 900px) {
   .section > div {
-    max-width: 1200px;
+    max-width: 933px;
     margin: auto;
   }
 }
+
 
 /* section metadata */
 main .section.light,
