@@ -85,6 +85,7 @@ async function loadEager(doc) {
   );
 
   [...document.querySelectorAll('picture')].slice(0, 1).forEach((picture) => {
+    picture.querySelector('img').setAttribute('loading', 'eager');
     document.querySelector('head').insertAdjacentHTML(
       'beforeend',
       `<link rel="preload" fetchpriority="high" as="image" href="${getImageUrlFromPicture(picture)}" type="image/webp">`,

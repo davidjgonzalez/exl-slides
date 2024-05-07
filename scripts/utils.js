@@ -1,23 +1,35 @@
 // eslint-disable-next-line import/prefer-default-export
-export function getImageUrlFromPicture(element) {
-  // Check if it's a <picture> element
-  if (element.tagName.toLowerCase() === 'picture') {
-    const sources = element.querySelectorAll('source');
+export function getImageUrlFromPicture(pictureElement) {
+  // Get window width
+  const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-    // Iterate through each <source> element
-    for (let i = 0; i < sources.length; i++) {
-      const source = sources[i];
-      const media = source.getAttribute('media');
+  // Get all source elements within the picture element
+  const sourceElements = pictureElement.querySelectorAll('source');
+
+  // Initialize variable to store matching image URL
+  let matchingURL = null;
+
+  // Iterate through each source element
+  [...sourceElements].forEach((source) => {
+    // Get media query from the source element
+    const mediaQuery = source.getAttribute('media');
+
+    // Check if media query matches window width
+    if (!mediaQuery || window.matchMedia(mediaQuery).matches) {
+      // Get the srcset attribute value
       const srcset = source.getAttribute('srcset');
-
-      // Check if the media query matches the viewport or if there's no media query
-      if (!media || window.matchMedia(media).matches) {
-        // Return the URL of the matching source
-        return srcset.split(',').map((item) => item.trim().split(' ')[0])[0];
-      }
+      // Set the matching URL
+      matchingURL = srcset.split(',')[0].trim().split(' ')[0];
+      // Break out of loop once matching URL is found
     }
+  });
+
+  // If no match found, return default image URL
+  if (!matchingURL) {
+    matchingURL = pictureElement.querySelector('img').getAttribute('src');
   }
 
-  // If no matching <source> element is found, return the URL of the <img> element
-  return element.querySelector('img').getAttribute('src');
+
+  console.log('matchingURL', matchingURL);
+  return matchingURL;
 }

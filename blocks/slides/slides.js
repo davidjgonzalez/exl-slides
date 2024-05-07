@@ -202,12 +202,6 @@ function addCallouts(step) {
     }
   }, 100); // Wait for the image to have display on its parent
 
-
-
-
-
-
-  
 }
 
 function parseCallout(calloutParams = '') {
