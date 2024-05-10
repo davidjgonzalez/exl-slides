@@ -91,7 +91,7 @@ function html(content) {
                         </div >
 
                         <div class="step-name" data-step-name>
-                            <label class="step-name-label for="step-name-${index}">Current step:</label>
+                            <label class="step-name-label" for="step-name-${index}">Current step:</label>
                             <select class="step-name-select" name="step-name-${index}">
                                 ${// eslint-disable-next-line no-shadow
   content.steps.map((step, index) => `<option value="${index}">${index + 1}. ${step.title}</option>`).join('')}
