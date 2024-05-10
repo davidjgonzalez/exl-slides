@@ -112,180 +112,37 @@
   z-index: var(--callout-indicator-z);
   border-radius: 50%;
   border: solid 1px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b));
-  box-shadow: 0 0 0 1px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      80%),
-    0 0 0 2px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      75%),
-    0 0 0 3px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      70%),
-    0 0 0 4px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      65%),
-    0 0 0 5px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      60%),
-    0 0 0 6px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      55%),
-    0 0 0 7px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      50%),
-    0 0 0 8px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      45%),
-    0 0 0 9px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      40%),
-    0 0 0 10px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      35%),
-    0 0 0 11px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      30%),
-    0 0 0 12px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      25%),
-    0 0 0 13px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      20%),
-    0 0 0 14px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      15%),
-    0 0 0 15px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      10%),
-    0 0 0 16px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      7.5%),
-    0 0 0 17px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      5%),
-    0 0 0 18px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      2.5%),
-    0 0 0 19px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      1.25%),
-    0 0 0 20px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      0%);
+  box-shadow: 
+  0 0 0 1px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 80%),
+  0 0 0 2px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 75%),
+  0 0 0 3px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 70%),
+  0 0 0 4px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 65%),
+  0 0 0 5px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 60%),
+  0 0 0 6px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 55%),
+  0 0 0 7px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 50%),
+  0 0 0 8px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 45%),
+  0 0 0 9px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 40%),
+  0 0 0 10px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 35%),
+  0 0 0 11px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 30%),
+  0 0 0 12px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 25%),
+  0 0 0 13px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 20%),
+  0 0 0 14px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 15%),
+  0 0 0 15px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 10%),
+  0 0 0 16px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 7.5%),
+  0 0 0 17px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 5%),
+  0 0 0 18px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 2.5%),
+  0 0 0 19px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 1.25%),
+  0 0 0 20px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b) / 0%);
   background-color: transparent;
   animation: pulse 2.5s ease-in-out forwards infinite;
 }
 
-.block.slides .step.active .visual.image .callout.visible .indicator.clickable i {
+.x-block.slides .step.active .visual.image .callout.visible .indicator.clickable i {
   --callout-color-r: 3;
   --callout-color-g: 95;
   --callout-color-b: 230;
 
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: solid 1px rgb(var(--callout-color-r) var(--callout-color-g) var(--callout-color-b));
-  box-shadow: 0 0 0 1px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      80%),
-    0 0 0 2px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      75%),
-    0 0 0 3px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      70%),
-    0 0 0 4px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      65%),
-    0 0 0 5px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      60%),
-    0 0 0 6px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      55%),
-    0 0 0 7px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      50%),
-    0 0 0 8px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      45%),
-    0 0 0 9px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      40%),
-    0 0 0 10px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      35%),
-    0 0 0 11px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      30%),
-    0 0 0 12px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      25%),
-    0 0 0 13px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      20%),
-    0 0 0 14px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      15%),
-    0 0 0 15px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      10%),
-    0 0 0 16px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      7.5%),
-    0 0 0 17px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      5%),
-    0 0 0 18px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      2.5%),
-    0 0 0 19px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      1.25%),
-    0 0 0 20px rgba(var(--callout-color-r)
-      var(--callout-color-g)
-      var(--callout-color-b)
-      0%);
+  cursor: pointer;
 }
 
 .block.slides .step.active .visual.image .callout.visible .indicator.clickable:hover {
@@ -296,7 +153,7 @@
   display: none;
   position: absolute;
   opacity: 0;
-  animation: fadeOut 0.5s forwards;
+  animation: fade-out 0.5s forwards;
   font-size: var(--spectrum-body-size-s);
   line-height: var(--spectrum-body-line-height);
 }
@@ -314,7 +171,7 @@
   padding: 1rem;
   border-radius: 8px;
   box-shadow: var(--drop-shadow);
-  animation: fadeIn 0.5s forwards;
+  animation: fade-in 0.5s forwards;
 }
 
 .block.slides .visual.image .callout.visible .indicator button {
