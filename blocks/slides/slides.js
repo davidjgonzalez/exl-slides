@@ -178,6 +178,7 @@ function addEventHandlers(block, initialStep = 0) {
 }
 
 export default async function decorate(block) {
+  block.style.display = 'none';
   const blockId = block.querySelector(':scope > div:first-child > div:first-child > h2').id;
 
   const content = {
@@ -208,6 +209,8 @@ export default async function decorate(block) {
   } else {
     showStep(block, getStepFromLink(block));
   }
+
+  block.style.display = 'block';
 
   return block;
 }
