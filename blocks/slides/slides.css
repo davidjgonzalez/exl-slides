@@ -309,6 +309,14 @@
   }
 
 
+    
+  .block.slides .controls .previous-button[disabled="true"],
+  .block.slides .controls .next-button[disabled="true"] {
+      background-color: var(--spectrum-gray-300);
+      color: var(--spectrum-gray-500);
+  }
+
+
   .block.slides .controls .auto-play {    
     display: flex;
     justify-content: center;
