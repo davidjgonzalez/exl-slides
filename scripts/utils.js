@@ -1,8 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
 export function getImageUrlFromPicture(pictureElement) {
-  // Get window width
-  const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
   // Get all source elements within the picture element
   const sourceElements = pictureElement.querySelectorAll('source');
 
@@ -19,6 +16,7 @@ export function getImageUrlFromPicture(pictureElement) {
       // Get the srcset attribute value
       const srcset = source.getAttribute('srcset');
       // Set the matching URL
+      // eslint-disable-next-line prefer-destructuring
       matchingURL = srcset.split(',')[0].trim().split(' ')[0];
       // Break out of loop once matching URL is found
     }

@@ -1,3 +1,5 @@
+import state from './state.js';
+
 export function normalizeSpaces(str) {
   // Replace multiple spaces with a single space
   return str.replace(/\s+/g, ' ').trim();
@@ -46,6 +48,7 @@ export function addCallouts(step) {
   const sourceElement = picture.querySelector('source[media="(min-width: 600px)"]');
   // Create a new Image element
   const largestImage = new Image();
+  // eslint-disable-next-line prefer-destructuring
   largestImage.src = sourceElement.getAttribute('srcset').split(' ')[0];
 
   // Listen for the load event of the Image element
@@ -80,9 +83,6 @@ export function addCallouts(step) {
           const indicatorTop = ((top - (height / 2)) * scaleY) / (imageHeight);
           const indicatorWidth = (width * scaleX) / imageWidth;
           const indicatorHeight = (height * scaleY) / imageHeight;
-
-          // console.log('wip', (left - (width / 2)) * scaleX, (top - (height / 2)) * scaleY);
-          // console.log('adjusted indicator', indicatorLeft, indicatorTop, indicatorWidth, indicatorHeight);
 
           indicator.style.left = `${indicatorLeft * 100}%`;
           indicator.style.top = `${indicatorTop * 100}%`;
@@ -138,7 +138,7 @@ export function parseCallout(calloutParams = '') {
   callout.x = parseInt(params[1], 10);
   callout.y = parseInt(params[2], 10);
 
-  if (Number.isNaN(callout.width) || Number.isNaN(callout.height) || Number.isNaN(callout.x) || Number.isNaN(callout.y)) {
+  if (['width', 'height', 'x', 'y'].find((prop) => Number.isNaN(callout[prop])) !== undefined) {
     if (callout.button) {
       callout.position = 'middle';
       callout.x = 'unset';
@@ -195,7 +195,7 @@ export async function activateStep(block, stepIndex, direction = 'next') {
             && getPreference('autoplayAudio')
             && getPreference('view') !== 'as-docs';
 
-  if (stepIndex === CURRENT_STEP && autoplayAudio) {
+  if (stepIndex === state.currentStep && autoplayAudio) {
     try {
       await audio.play();
     } catch (error) {

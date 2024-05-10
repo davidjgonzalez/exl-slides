@@ -1,10 +1,8 @@
+import state from './state.js';
 import {
   getPreference, setPreference, getStepFromLink, getVisual, getAudioFilename,
-  showAllSteps, showStep,
+  showAllSteps, showStep, setStepOnLink,
 } from './utils.js';
-
-/* eslint-disable max-len */
-let CURRENT_STEP = 0;
 
 function html(content) {
   const initialView = getPreference('view') || 'as-slides';
@@ -111,7 +109,7 @@ function html(content) {
 }
 
 function addEventHandlers(block, initialStep = 0) {
-  CURRENT_STEP = initialStep;
+  state.currentStep = initialStep;
   const numberOfSteps = [...block.querySelectorAll('[data-step]')].length;
 
   block.querySelectorAll('[data-toggle-view]').forEach((button) => {
@@ -123,36 +121,36 @@ function addEventHandlers(block, initialStep = 0) {
         showAllSteps(block);
       } else {
         setPreference('view', 'as-slides');
-        showStep(block, CURRENT_STEP);
+        showStep(block, state.currentStep);
       }
     });
   });
 
   block.querySelectorAll('[data-previous-step]').forEach((button) => {
     button.addEventListener('click', () => {
-      if (CURRENT_STEP > 0 && getPreference('view') !== 'as-docs') {
-        CURRENT_STEP -= 1;
-        setStepOnLink(block, CURRENT_STEP);
-        showStep(block, CURRENT_STEP, 'previous');
+      if (state.currentStep > 0 && getPreference('view') !== 'as-docs') {
+        state.currentStep -= 1;
+        setStepOnLink(block, state.currentStep);
+        showStep(block, state.currentStep, 'previous');
       }
     });
   });
 
   block.querySelectorAll('[data-next-step]').forEach((button) => {
     button.addEventListener('click', () => {
-      if (CURRENT_STEP < numberOfSteps - 1 && getPreference('view') !== 'as-docs') {
-        CURRENT_STEP += 1;
-        setStepOnLink(block, CURRENT_STEP);
-        showStep(block, CURRENT_STEP, 'next');
+      if (state.currentStep < numberOfSteps - 1 && getPreference('view') !== 'as-docs') {
+        state.currentStep += 1;
+        setStepOnLink(block, state.currentStep);
+        showStep(block, state.currentStep, 'next');
       }
     });
   });
 
   block.querySelectorAll('[data-step-name]').forEach((select) => {
     select.addEventListener('change', () => {
-      CURRENT_STEP = select.value;
-      setStepOnLink(block, CURRENT_STEP);
-      showStep(block, CURRENT_STEP, 'jump');
+      state.currentStep = select.value;
+      setStepOnLink(block, state.currentStep);
+      showStep(block, state.currentStep, 'jump');
     });
   });
 
