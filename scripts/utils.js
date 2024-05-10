@@ -29,7 +29,5 @@ export function getImageUrlFromPicture(pictureElement) {
     matchingURL = pictureElement.querySelector('img').getAttribute('src');
   }
 
-
-  console.log('matchingURL', matchingURL);
   return matchingURL;
 }

@@ -410,19 +410,29 @@
     color: var(--spectrum-gray-200);
   }
   
+  .block.slides .controls .step-name {
+    margin-top: 1rem;
+    padding: 1rem;
+
+    border-bottom: solid 1px var(--spectrum-gray-300);
+  }
+
+  .block.slides .controls .step-name-label {
+    display: block;
+    font-size: var(--spectrum-body-size-m);
+    color: var(--spectrum-gray-600);
+  }
   
-  .block.slides .controls select {
+  .block.slides .controls .step-name-select {
     font-family: var(--body-font-family);
     line-height: var(--exlm-line-height-h3);
     font-size: var(--exlm-font-size-h3);
     font-weight: var(--font-weight-700);
     font-style: normal;
     color: var(--text-color);
-    margin-top: 1rem;
-      
+
     width: 100%;
     border: 0;
-    padding: 1rem;
     background-color: transparent;
     border: 0;
     outline: none;
