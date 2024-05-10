@@ -121,7 +121,7 @@ async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
-  document.querySelector('head').insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="https://experienceleague.adobe.com/styles/styles.css">');
+  // document.querySelector('head').insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="https://experienceleague.adobe.com/styles/styles.css">');
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;

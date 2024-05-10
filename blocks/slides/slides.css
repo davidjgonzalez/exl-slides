@@ -46,12 +46,12 @@
   .block.slides .step {
     display: none;
     flex-direction: column;
-    animation: slideTransitionOut .1s ease-in forwards;
+    /* animation: slideTransitionOut .1s ease-in forwards; */
   }
   
   .block.slides .step.active {
     display: flex;
-    animation: slideTransitionIn .1s ease-in forwards;
+    /* animation: slideTransitionIn .1s ease-in forwards; */
   }
   
   .block.slides .step .title {
@@ -59,6 +59,10 @@
   }
   
   /* Visuals */
+  .block.slides .visual-wrapper {
+    min-height: 230px;
+  }
+
   .block.slides .visual {
     position: relative;
     margin-top: 1rem;

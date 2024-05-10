@@ -33,39 +33,41 @@ function html(content) {
                     <meta itemprop="representativeOfPage" content="${index === 0 ? 'true' : 'false'}">
 
                     <!-- Visuals -->
-                    <div class="visual ${step.visual.code ? 'code' : 'image'}">
-                        <span class="step-counter">${index + 1}<span class="slash">/</span>${content.steps.length}</span>
+                    <div class="visual-wrapper">
+                      <div class="visual ${step.visual.code ? 'code' : 'image'}">
+                          <span class="step-counter">${index + 1}<span class="slash">/</span>${content.steps.length}</span>
 
-                        ${step.visual.image ? `
-                            <!-- Image visual -->
-                            ${step.visual.callouts?.filter((callout) => !callout.toast).map((callout) => `
-                                <span class="callout" data-callout>
-                                    <span class="indicator ${callout.clickable ? 'clickable' : ''}" 
-                                            ${!callout.button && callout.clickable === 'next' ? 'data-next-step' : ''} 
-                                            data-callout-indicator
-                                            data-callout-indicator-width="${callout.width}"
-                                            data-callout-indicator-height="${callout.height}"
-                                            data-callout-indicator-x="${callout.x}"
-                                            data-callout-indicator-y="${callout.y}">
-                                                <i></i>
-                                                ${callout.button ? `<button ${callout.clickable === 'next' ? 'data-next-step' : ''} data-callout-button>${callout.button}</button>` : ''}
-                                    </span>
-                                    ${callout.tooltip ? `<p class="tooltip" data-callout-tooltip>${callout.tooltip}</p>` : ''}
-                                   
-                                </span>
-                            `).join('')}                
-                            ${step.visual.image}` : ''}
+                          ${step.visual.image ? `
+                              <!-- Image visual -->
+                              ${step.visual.callouts?.filter((callout) => !callout.toast).map((callout) => `
+                                  <span class="callout" data-callout>
+                                      <span class="indicator ${callout.clickable ? 'clickable' : ''}" 
+                                              ${!callout.button && callout.clickable === 'next' ? 'data-next-step' : ''} 
+                                              data-callout-indicator
+                                              data-callout-indicator-width="${callout.width}"
+                                              data-callout-indicator-height="${callout.height}"
+                                              data-callout-indicator-x="${callout.x}"
+                                              data-callout-indicator-y="${callout.y}">
+                                                  <i></i>
+                                                  ${callout.button ? `<button ${callout.clickable === 'next' ? 'data-next-step' : ''} data-callout-button>${callout.button}</button>` : ''}
+                                      </span>
+                                      ${callout.tooltip ? `<p class="tooltip" data-callout-tooltip>${callout.tooltip}</p>` : ''}
+                                    
+                                  </span>
+                              `).join('')}                
+                              ${step.visual.image}` : ''}
 
-                        ${step.visual.code ? `
-                            <!-- Code visual -->
-                            <div class="body">${step.visual.body}</div>
-                            ${step.visual.code}` : ''}      
-                            
-                        ${step.visual.callouts?.find((callout) => callout.toast) ? `
-                            <div class="toast">${step.visual.callouts?.find((callout) => callout.toast).toast}</div>
-                        ` : ''}
+                          ${step.visual.code ? `
+                              <!-- Code visual -->
+                              <div class="body">${step.visual.body}</div>
+                              ${step.visual.code}` : ''}      
+                              
+                          ${step.visual.callouts?.find((callout) => callout.toast) ? `
+                              <div class="toast">${step.visual.callouts?.find((callout) => callout.toast).toast}</div>
+                          ` : ''}
 
-                    </div>            
+                      </div>            
+                    </div>
 
                     <!-- Slide Controls -->
                     <div class="controls">
@@ -92,7 +94,7 @@ function html(content) {
 
                         <div class="step-name" data-step-name>
                             <label class="step-name-label" for="step-name-${index}">Current step:</label>
-                            <select class="step-name-select" name="step-name-${index}">
+                            <select class="step-name-select" data-step-name-select name="step-name-${index}">
                                 ${// eslint-disable-next-line no-shadow
   content.steps.map((step, index) => `<option value="${index}">${index + 1}. ${step.title}</option>`).join('')}
                             </select>

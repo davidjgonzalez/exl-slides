@@ -238,7 +238,7 @@ export function showStep(block, stepIndex, direction = 'next') {
   // Must come after the remove active above
   activateStep(block, stepIndex, direction);
 
-  step.querySelectorAll('[data-step-name]').forEach((select) => {
+  step.querySelectorAll('[data-step-name-select]').forEach((select) => {
     select.value = stepIndex;
   });
 }
