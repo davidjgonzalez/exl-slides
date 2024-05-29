@@ -101,8 +101,6 @@ export function addCallouts(step) {
           const left = parseInt(indicator.dataset.calloutIndicatorX, 10);
           const top = parseInt(indicator.dataset.calloutIndicatorY, 10);
 
-          // console.log('indicator', left, top, width, height);
-
           const indicatorLeft = ((left - (width / 2)) * scaleX) / (imageWidth);
           const indicatorTop = ((top - (height / 2)) * scaleY) / (imageHeight);
           const indicatorWidth = (width * scaleX) / imageWidth;
@@ -238,8 +236,6 @@ export function showStep(block, stepId, direction = 'next') {
 
   previousButton.removeAttribute('disabled');
   nextButton.removeAttribute('disabled');
-
-  console.log(nextButton);
 
   if (!getPreviousStep(block, stepId)) {
     previousButton.setAttribute('disabled', true);

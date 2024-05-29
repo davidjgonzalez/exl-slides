@@ -89,11 +89,13 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 export default async function decorate(block) {
+  block.innerHTML = block.innerHTML.trim();
 }
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
+// eslint-disable-next-line no-unused-vars
 async function xdecorate(block) {
   // load nav as fragment
 

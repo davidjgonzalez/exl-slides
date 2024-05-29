@@ -170,7 +170,6 @@ function addEventHandlers(block) {
   block.querySelectorAll('[data-section-select]').forEach((select) => {
     select.addEventListener('change', () => {
       state.currentStep = select.value;
-      console.log(state.currentStep);
       updateWindowLocation(block, state.currentStep);
       showStep(block, state.currentStep, 'jump');
       block.querySelectorAll('[data-option-force-active="true"]').forEach((option) => {
