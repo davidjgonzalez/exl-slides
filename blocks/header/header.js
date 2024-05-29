@@ -42,9 +42,11 @@ function focusNavSection() {
  * @param {Boolean} expanded Whether the element should be expanded or collapsed
  */
 function toggleAllNavSections(sections, expanded = false) {
-  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
-    section.setAttribute('aria-expanded', expanded);
-  });
+  if (sections) {
+    sections?.querySelectorAll('.nav-sections .default-content-wrapper > ul > li')?.forEach((section) => {
+      if (section) { section.setAttribute('aria-expanded', expanded); }
+    });
+  }
 }
 
 /**
@@ -86,12 +88,17 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+export default async function decorate(block) {
+  block.innerHTML = block.innerHTML.trim();
+}
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
-export default async function decorate(block) {
+// eslint-disable-next-line no-unused-vars
+async function xdecorate(block) {
   // load nav as fragment
+
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);

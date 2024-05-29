@@ -3,7 +3,7 @@
   --height-pill: 40px;
   --border-radius: 30px;
   --border-radius-pill: calc(var(--height-pill) / 2);
-  --drop-shadow: 0 5px 10px rgba(0 0 0 0.1);
+  --drop-shadow: 0 5px 10px rgba(0 0 0 / 10%);
   --callout-button-z: 1200;
   --callout-tooltip-z: 1300;
   --toast-z: 1100;
@@ -41,6 +41,31 @@
 .block.slides .intro {
   padding: 0;
 }
+
+/* Sections */
+
+.block.slides .sections .section-title,
+.block.slides .sections .section-description {
+    display: block;
+}
+
+
+
+.block.slides .sections .section-select {
+  font-family: var(--body-font-family);
+  line-height: var(--exlm-line-height-h3);
+  font-size: var(--exlm-font-size-h3);
+  font-weight: var(--font-weight-700);
+  font-style: normal;
+  color: var(--text-color);
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+
+/* Steps */
 
 .block.slides .step {
   display: none;
@@ -375,17 +400,24 @@
   color: var(--spectrum-gray-200);
 }
 
+.block.slides .sections .controls .section-title {
+  display: block;
+  font-family: var(--body-font-family);
+  font-size: var(--spectrum-body-size-m);
+  color: var(--spectrum-gray-600);
+  margin: 0 0 0 -.25rem;
+  font-weight: normal;
+  width: 100%;
+  border: 0;
+  padding: 0;
+}
+
 .block.slides .controls .step-name {
   margin-top: 1rem;
   padding: 1rem;
   border-bottom: solid 1px var(--spectrum-gray-300);
 }
 
-.block.slides .controls .step-name-label {
-  display: block;
-  font-size: var(--spectrum-body-size-m);
-  color: var(--spectrum-gray-600);
-}
 
 .block.slides .controls .step-name-select {
   font-family: var(--body-font-family);
@@ -399,6 +431,7 @@
   background-color: transparent;
   outline: none;
 }
+
 
 /* Content */
 
@@ -414,6 +447,11 @@
 }
 
 /* Display Toggles:  As Docs */
+
+.block.slides .container.as-docs .sections .section-title,
+.block.slides .container.as-docs .sections .section-description {
+    display: block;
+}
 
 .block.slides .container.as-docs .display-toggles .as-slides,
 .block.slides .container.as-docs .step .title {

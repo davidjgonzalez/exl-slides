@@ -38,6 +38,30 @@ export async function sha256(str) {
   return hashHex;
 }
 
+export function getNextStep(block, currentStep) {
+  const steps = [...block.querySelectorAll('[data-step]')] || [];
+  const currentIndex = steps.findIndex((step) => step.dataset.step === currentStep);
+
+  if (currentIndex !== -1 && currentIndex < steps.length - 1) {
+    const nextStep = steps[currentIndex + 1];
+    return nextStep.dataset.step;
+  }
+
+  return null; // No next step found
+}
+
+export function getPreviousStep(block, currentStep) {
+  const steps = [...block.querySelectorAll('[data-step]')] || [];
+  const currentIndex = steps.findIndex((step) => step.dataset.step === currentStep);
+
+  if (currentIndex > 0) {
+    const previousStep = steps[currentIndex - 1];
+    return previousStep.dataset.step;
+  }
+
+  return null; // No previous step found
+}
+
 export function addCallouts(step) {
   const picture = step.querySelector('picture');
   const image = step.querySelector('img');
@@ -76,8 +100,6 @@ export function addCallouts(step) {
           const height = parseInt(indicator.dataset.calloutIndicatorHeight, 10) || width;
           const left = parseInt(indicator.dataset.calloutIndicatorX, 10);
           const top = parseInt(indicator.dataset.calloutIndicatorY, 10);
-
-          // console.log('indicator', left, top, width, height);
 
           const indicatorLeft = ((left - (width / 2)) * scaleX) / (imageWidth);
           const indicatorTop = ((top - (height / 2)) * scaleY) / (imageHeight);
@@ -206,20 +228,18 @@ export async function activateStep(block, stepIndex, direction = 'next') {
   }
 }
 
-export function showStep(block, stepIndex, direction = 'next') {
-  const numberOfSteps = [...block.querySelectorAll('[data-step]')].length;
+export function showStep(block, stepId, direction = 'next') {
+  const step = block.querySelector(`[data-step="${stepId}"]`);
 
-  const step = block.querySelector(`[data-step="${stepIndex}"]`);
-
-  const previousButton = step.querySelector('[data-previous-step]');
-  const nextButton = step.querySelector('[data-next-step]');
+  const previousButton = step.querySelector('[data-previous-step="previous-button"]');
+  const nextButton = step.querySelector('[data-next-step="next-button"]');
 
   previousButton.removeAttribute('disabled');
   nextButton.removeAttribute('disabled');
 
-  if (stepIndex === 0) {
+  if (!getPreviousStep(block, stepId)) {
     previousButton.setAttribute('disabled', true);
-  } else if (stepIndex === numberOfSteps - 1) {
+  } else if (!getNextStep(block, stepId)) {
     nextButton.setAttribute('disabled', true);
   }
 
@@ -236,10 +256,10 @@ export function showStep(block, stepIndex, direction = 'next') {
   });
 
   // Must come after the remove active above
-  activateStep(block, stepIndex, direction);
+  activateStep(block, stepId, direction);
 
   step.querySelectorAll('[data-step-name-select]').forEach((select) => {
-    select.value = stepIndex;
+    select.value = stepId;
   });
 }
 
@@ -250,29 +270,22 @@ export function showAllSteps(block) {
   });
 }
 
-export function getStepFromLink(block) {
+export function getStepFromWindowLocation(block) {
   // eslint-disable-next-line prefer-const
-  let [blockId, stepIndex] = ((window.location?.hash ?? '').replace('#', '') ?? '').split('=');
-  stepIndex = parseInt(stepIndex, 10);
-  stepIndex = Number.isNaN(stepIndex) ? 0 : stepIndex - 1;
+  let [blockId, stepId] = ((window.location?.hash ?? '').replace('#', '') ?? '').split('=');
 
-  if (block.querySelector(`[data-block-id="${blockId}"] [data-step="${stepIndex}"]`)) {
-    return stepIndex;
+  if (block.querySelector(`[data-block-id="${blockId}"] [data-step="${stepId}"], h2[id="${blockId}"] h4[id="${stepId}"]`)) {
+    return stepId;
   }
 
-  return 0;
+  return null;
 }
 
-export function setStepOnLink(block, stepIndexStr) {
+export function updateWindowLocation(block, stepId) {
   const { blockId } = block.querySelector('[data-block-id]').dataset;
 
-  let stepIndex = parseInt(stepIndexStr, 10);
-  if (Number.isNaN(stepIndex)) {
-    stepIndex = 0;
-  }
-
-  if (blockId && stepIndex > -1) {
-    window.location.hash = `#${blockId}=${stepIndex + 1}`;
+  if (blockId && stepId) {
+    window.location.hash = `#${blockId}=${stepId}`;
   }
 }
 
