@@ -299,7 +299,7 @@ export async function getAudioFilename(content) {
     }
     return el.textContent;
   }).join(' ');
-  text = text.replace(/\s+/g, ' ').trim();
+  text = normalizeSpaces(text);
 
   return `${text.length}-${await sha256(normalizeSpaces(text))}`;
 }
