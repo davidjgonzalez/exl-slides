@@ -555,7 +555,7 @@ header {
 }
 
 main {
-  max-width: 933px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -689,7 +689,7 @@ main .section {
 
 @media (width >= 900px) {
   .section > div {
-    max-width: 933px;
+    max-width: 1600px;
     margin: auto;
   }
 }

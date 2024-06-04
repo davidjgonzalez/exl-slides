@@ -10,6 +10,7 @@
   --callout-indicator-z: 1000;
   --step-counter-z: 900;
   --controls-height: 26px;
+  --max-width: 1600px;
 }
 
 .block.slides .container {
@@ -19,7 +20,7 @@
   margin: 0;
   padding: 0;
   overflow: visible;
-  max-width: 933px;
+  max-width: var(--max-width)
 }
 
 .block.slides .header {
@@ -405,7 +406,7 @@
   font-family: var(--body-font-family);
   font-size: var(--spectrum-body-size-m);
   color: var(--spectrum-gray-600);
-  margin: 0 0 0 -.25rem;
+  margin: 0 0 .5rem;
   font-weight: normal;
   width: 100%;
   border: 0;
@@ -434,10 +435,10 @@
 
 
 /* Content */
-
 .block.slides .content {
   flex-direction: column;
   padding: 0 1rem 1rem;
+  font-size: var(--spectrum-body-size-m);
 }
 
 /* Display toggles */
