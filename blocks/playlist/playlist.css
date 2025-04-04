@@ -14,3 +14,13 @@
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
     border-radius: 13px;
 }
+
+
+.block.playlist pre code {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 13px;
+    border: solid 1px #eee;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
