@@ -54,7 +54,7 @@ function addEventListeners(block) {
     });
 }
 
-async function decorate(block) {
+export default async function decorate(block) {
     const language = new URLSearchParams(window.location.search).get('lang') || 'en';
 
     content = {
